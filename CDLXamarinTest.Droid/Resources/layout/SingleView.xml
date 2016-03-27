@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res/com.example.cdlxamarintest"
+    android:orientation="vertical"
+    android:background="@drawable/bg">
+    <LinearLayout
+        style="@style/TopBar">
+        <View
+            style="@style/DummyPlaceholder" />
+        <TextView
+            style="@style/TopBarTitle"
+            android:text="@string/movie_explorer" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Mvx.MvxImageView
+                    android:layout_width="120dp"
+                    android:layout_height="178dp"
+                    android:padding="1dp"
+                    android:background="#fff"
+                    local:MvxBind="ImageUrl Bag.Movie.PosterURL" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp">
+                    <TextView
+                        local:MvxBind="Text Bag.Movie.Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/WhiteHeadingText" />
+                    <TextView
+                        local:MvxBind="Text Bag.Movie.ReleaseDate, Converter=FriendlyDate, ConverterParameter='Release Date: {0}'"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/WhiteParagraphText" />
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        local:MvxBind="Rating Bag.Movie.VoteAverage, Converter=TenToFiveStar"
+                        android:isIndicator="true" />
+                    <TextView
+                        local:MvxBind="Text Bag.Movie.VoteCount, Converter=FloatFormat, ConverterParameter='(from {0} votes)'"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/WhiteParagraphText" />
+                    <Button
+                        android:text="Play Video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        local:MvxBind="Click PlayVideoCommand"
+                        android:background="#a3ca19"
+                        style="@style/ButtonInSingle"
+                        android:layout_marginTop="8dp" />
+                    <Button
+                        android:text="Save to Favorites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        local:MvxBind="Click SaveToFavoritesCommand"
+                        android:background="#dbb001"
+                        style="@style/ButtonInSingle"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                local:MvxBind="Text Bag.Movie.Overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/WhiteParagraphText"
+                android:layout_marginTop="12dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:text="Similar Movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/WhiteHeadingText" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp"
+                    android:weightSum="3">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <Mvx.MvxImageView
+                            android:layout_width="110dp"
+                            android:layout_height="165dp"
+                            android:padding="1dp"
+                            android:background="#fff"
+                            local:MvxBind="ImageUrl Bag.Related[0].PosterURL;onClick ItemSelectedCommand(Bag.Related[0])" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <Mvx.MvxImageView
+                            android:layout_width="110dp"
+                            android:layout_height="165dp"
+                            android:padding="1dp"
+                            android:background="#fff"
+                            local:MvxBind="ImageUrl Bag.Related[1].PosterURL;onClick ItemSelectedCommand(Bag.Related[1])" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <Mvx.MvxImageView
+                            android:layout_width="110dp"
+                            android:layout_height="165dp"
+                            android:padding="1dp"
+                            android:background="#fff"
+                            local:MvxBind="ImageUrl Bag.Related[2].PosterURL;onClick ItemSelectedCommand(Bag.Related[2])" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

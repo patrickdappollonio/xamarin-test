@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res/com.example.cdlxamarintest"
+    android:orientation="vertical"
+    android:background="@drawable/bg">
+    <LinearLayout
+        style="@style/TopBar">
+        <View
+            style="@style/DummyPlaceholder" />
+        <TextView
+            style="@style/TopBarTitle"
+            android:text="@string/app_name"
+            android:id="@+id/textView1" />
+    </LinearLayout>
+    <Mvx.MvxListView
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        local:MvxBind="ItemsSource Items;ItemClick ItemSelectedCommand"
+        local:MvxItemTemplate="@layout/listitem" />
+</LinearLayout>
